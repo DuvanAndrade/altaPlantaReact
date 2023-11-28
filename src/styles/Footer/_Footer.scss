@@ -1,0 +1,28 @@
+.footer__container{
+    background-color: $colorBgNavBar;
+}
+.redes{
+    svg{
+        width: 2rem;
+    }
+}
+.newsletter{
+    input{
+    background-color: $colorBgNavBar;
+    border-bottom: 1px solid $colorVerdePrincipal;
+    }
+    button{
+        background-color: $colorVerdePrincipal;
+        color: $colorBgInput;
+        width: 100%;
+        transition: 0.4s;
+    }
+    &:hover{
+        button{
+        background-color: $colorBgNavBar;
+        color: $colorVerdePrincipal;
+        border: 1px solid $colorVerdePrincipal;
+        }
+        
+    }
+}

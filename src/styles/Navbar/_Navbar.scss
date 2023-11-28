@@ -1,0 +1,35 @@
+.navbar__info{
+    background-color: $colorVerdePrincipal;
+}
+.navbar__bg{
+    background-color: $colorBgNavBar;
+}
+.logo{
+    width: 30%;
+}
+.navbar__seccion__list{
+    a{
+        color: $colorVerdePrincipal;
+        font-size: .8rem;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+    &:hover{
+        a{
+            cursor: pointer;
+           border-bottom: 1px solid $colorVerdePrincipal; 
+        }
+        
+    }
+}
+.busqueda{
+    border-bottom: 1px solid rgba(67, 67, 67, 0.3);
+    input{
+        background-color: $colorBgNavBar;
+        padding: 5px 10px;
+    }
+    button{
+        background-color: $colorBgNavBar;
+    }
+    
+}
