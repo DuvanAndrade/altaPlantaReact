@@ -8,7 +8,9 @@ export default {
     extend: {
       colors:{
         'verdePrincipal': '#345430',
-        'verdeHover': '#879a80'
+        'verdeHover': '#879a80',
+        'colorBgMain': '#e8e9e8',
+        'colorBgNavbar': '#d4d6ce'
       }
     },
   },

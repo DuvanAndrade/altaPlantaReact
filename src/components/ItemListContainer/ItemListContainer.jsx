@@ -1,4 +1,4 @@
-const PlantasItems = ({greeting}) =>{
+const ItemListContainer = ({greeting}) =>{
     return (
         <main className="main__container font-serif text-center p-10 text-verdePrincipal font-semibold text-2xl">
             
@@ -10,4 +10,4 @@ const PlantasItems = ({greeting}) =>{
     )
 
 }
-export default PlantasItems
+export default ItemListContainer
