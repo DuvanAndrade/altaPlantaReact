@@ -3,7 +3,7 @@ export const DATA = [
         id: 1,
         name: 'Lirio de la Paz',
         price: 1500,
-        img: '../../public/img/plantasInterior/lirioDeLaPaz.jpg',
+        img: '/img/plantasInterior/lirioDeLaPaz.jpg',
         description: `El lirio de la paz no solo dará un toque de belleza y serenidad a tu hogar. También limpiará de impurezas el aire que respiras. Además, no te exigirá muchos cuidados ni tiempo para mantener su hermosura y lozanía.`
     },
     {
