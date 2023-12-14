@@ -1,21 +1,12 @@
 import { useState, useEffect } from "react"
 import { pedirDatos } from "../../utilities/utilities"
 import ItemList from "../ItemList/ItemList"
+import useProductos from "../../hooks/useProductos"
 
 const ItemListContainer = ({greeting}) =>{
+    const {productos, loading} = useProductos()
     
-    const [productos, setProdutos] = useState([])
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        setLoading(true)
-
-        pedirDatos() // <= Promise
-            .then((data) => {
-                setProdutos( data )
-                setLoading( false )
-            })
-    }, [])
+    
     return (
         <main className="main__container font-serif text-center p-10 text-verdePrincipal font-semibold ">
             

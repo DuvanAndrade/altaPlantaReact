@@ -4,6 +4,8 @@ import CartWidget from '../CartWidget/CartWidget'
 
 const Navbar = () => {
 
+ 
+
   return (
       <header className= "navbar">
         
