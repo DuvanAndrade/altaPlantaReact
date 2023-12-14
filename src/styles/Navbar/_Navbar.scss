@@ -7,6 +7,13 @@
 .logo{
     width: 30%;
 }
+.link_navbar{
+    color: $colorVerdePrincipal;
+    font-weight: 500;
+    &:hover{
+        color: $verdeHover;
+    }
+}
 .navbar__seccion__list{
     a{
         color: $colorVerdePrincipal;

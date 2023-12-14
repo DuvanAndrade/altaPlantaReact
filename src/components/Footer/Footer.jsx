@@ -1,5 +1,7 @@
 import FooterLink from "./FooterLink"
 import Botones from "../Botones/Botones"
+import { Link } from "react-router-dom"
+
 
 const Footer = () =>{
     return (
@@ -7,10 +9,12 @@ const Footer = () =>{
             <section >
                 <h1 className="font-semibold ">NAVEGACIÓN</h1>
                 <div className="flex flex-col gap-4 pt-4">
-                    <FooterLink href={"#"} text={"PLANTAS"}/>
-                    <FooterLink href={"#"} text={"MACETAS Y ACCESORIOS"}/>
-                    <FooterLink href={"#"} text={"TERRARIOS"}/>
-                    <FooterLink href={"#"} text={"CONTACTO"}/>
+                    <Link  to={"/"} className="link_navbar uppercase font-serif ">INICIO</Link>
+                    <Link  to={"/productos/interior"} className="link_navbar uppercase font-serif ">PLANTAS</Link>
+                    <Link  to={"/productos/macetas"} className="link_navbar uppercase font-serif">MACETAS Y ACCESORIOS</Link>
+                    <Link  to={"/productos/terrarios"} className="link_navbar uppercase font-serif ">TERRARIOS</Link>
+                    <Link  to={"/contacto"} className="link_navbar uppercase font-serif ">CONTACTO</Link>
+
                 </div>
                 
             </section>
@@ -54,7 +58,7 @@ const Footer = () =>{
                     <div className="">
                         <h2 className="font-semibold pb-2">¡NEWSLETTER!</h2>
                         <form className="newsletter flex flex-col gap-4" >
-                            <input  type="email" name="user_mail" placeholder="Email*"/>            
+                            <input  type="email" name="user_mail" placeholder="Email*"/>      
                             <Botones  text="Enviar"/>
                         </form>
                     </div>
