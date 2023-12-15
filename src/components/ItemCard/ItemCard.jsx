@@ -8,9 +8,9 @@ const ItemCard = ({item}) => {
       <img className="img__product" src={item.img} alt={item.name} />
       <h3 className="text-xl font-serif font-light pt-4">{item.name}</h3>
       <p className="text-lg font-sans font-bold pb-2">Precio: ${item.price}</p>
-      <Botones text="Ver más">
-        <Link to={`/item/${item.id}`}></Link>
-      </Botones>       
+
+        <Link to={`/item/${item.id}`}><Botones text="Ver más"/></Link>
+          
     </article>
   );
 };

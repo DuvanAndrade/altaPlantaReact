@@ -15,7 +15,7 @@ const ItemListContainer = ({greeting}) =>{
             </div>
             {
                 loading
-                    ? <h2 className="text-center text-2xl mt-8">Cargando...</h2>
+                    ? <h2 className="text-center text-2xl mt-8 mb-10">Cargando...</h2>
                     : <ItemList productos={productos}/>
             }
         </main>

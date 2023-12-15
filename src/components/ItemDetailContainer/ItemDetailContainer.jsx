@@ -22,7 +22,7 @@ const ItemDetailContainer = () =>{
    
           <main className="main__container font-serif text-center p-10 text-verdePrincipal font-semibold ">
             {loading ? (
-             <h2 className="text-center text-4xl mt-8">Cargando...</h2>
+             <h2 className="text-center text-2xl mt-4 mb-20">Cargando...</h2>
             ) : (
               <ItemDetail item={item}/>
             )}

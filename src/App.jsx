@@ -15,13 +15,13 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path='/' element={<HomePage/>}/>
-        <Route path='/productos' element={<ItemListContainer greeting={"NUESTROS PRODUCTOS"}/>}/>
-        <Route path='/productos/:categoria' element={<ItemListContainer greeting={"NUESTROS PRODUCTOS"}/>}/>
-        <Route path='/item/:itemId' element={ <ItemDetailContainer /> } />
-        <Route path='/contacto' element={<Contacto/>}/>
+        <Route path='productos' element={<ItemListContainer greeting={"NUESTROS PRODUCTOS"}/>}/>
+        <Route path='productos/:categoria' element={<ItemListContainer greeting={"NUESTROS PRODUCTOS"}/>}/>
+        <Route path='item/:itemId' element={ <ItemDetailContainer /> } />
+        <Route path='contacto' element={<Contacto/>}/>
         
-        <Route path='/not-found' element={<h1 className='text-center text-verdePrincipal text-5xl pt-9 pb-40'>Not Found...</h1>}/>
-        <Route path='*' element={<Navigate to={'/not-found'}/>}/>
+        <Route path='not-found' element={<h1 className='text-center text-verdePrincipal text-5xl pt-9 pb-40'>Not Found...</h1>}/>
+        <Route path='*' element={<Navigate to={'not-found'}/>}/>
       </Routes>
       
       <Footer/> 

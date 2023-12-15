@@ -200,7 +200,7 @@ export const DATA = [
     },
     {
         id: 21,
-        name: 'Maceta Colgante de Macrame',
+        name: 'Maceta Colgante Macrame',
         price: 1500,
         img: '/img/macetas/mColganteMacrame.jpg',
         description: ``,
@@ -218,7 +218,7 @@ export const DATA = [
     },
     {
         id: 23,
-        name: 'Maceta Colgante de Madera',
+        name: 'Maceta Colgante Madera',
         price: 1500,
         img: '/img/macetas/mColganteMadera.png',
         description: ``,
