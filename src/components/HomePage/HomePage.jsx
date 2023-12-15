@@ -1,6 +1,6 @@
 const HomePage = () =>{
     return(
-        <h1>jjj</h1>
+        <h1 className="text-center text-4xl py-20"> EN FABRICACIÓN 😊😊😊 </h1>
     )
 
 }
