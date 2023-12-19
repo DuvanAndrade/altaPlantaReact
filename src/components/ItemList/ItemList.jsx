@@ -7,7 +7,7 @@ const ItemList = ({productos}) => {
     <section className="container mx-auto  mt-8">
 
 
-        <div className="grid grid-cols-4 grid-flow-row	 gap-10 justify-items-center content-center pt-8">
+        <div className="grid grid-cols-4 grid-flow-row	 gap-10 justify-items-center content-center pt-8  items-stretch">
             {productos.map((item) => <ItemCard key={item.id} item={item}/>)}
         </div>
 

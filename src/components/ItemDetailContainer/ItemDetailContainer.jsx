@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { pedirDatos } from "../../utilities/utilities";
 import { useParams } from "react-router-dom";
 import ItemDetail from "../ItemDetail/ItemDetail";
+import Loader from "../Loader/Loader";
 
 const ItemDetailContainer = () =>{
     const [loading, setLoading] = useState(true);
@@ -22,7 +23,7 @@ const ItemDetailContainer = () =>{
    
           <main className="main__container font-serif text-center p-10 text-verdePrincipal font-semibold ">
             {loading ? (
-             <h2 className="text-center text-2xl mt-4 mb-20">Cargando...</h2>
+             <Loader/>
             ) : (
               <ItemDetail item={item}/>
             )}

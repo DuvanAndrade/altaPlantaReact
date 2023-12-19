@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { pedirDatos } from "../../utilities/utilities"
 import ItemList from "../ItemList/ItemList"
 import useProductos from "../../hooks/useProductos"
+import Loader from "../Loader/Loader"
 
 const ItemListContainer = ({greeting}) =>{
     const {productos, loading} = useProductos()
@@ -13,11 +14,14 @@ const ItemListContainer = ({greeting}) =>{
             <div className="text-2xl">
                 <h1>{greeting}</h1>
             </div>
-            {
-                loading
-                    ? <h2 className="text-center text-2xl mt-8 mb-10">Cargando...</h2>
-                    : <ItemList productos={productos}/>
-            }
+          
+
+          {loading ? (
+            <Loader />
+          ) : (
+            <ItemList productos={productos} />
+          )}
+  
         </main>
     )
 }

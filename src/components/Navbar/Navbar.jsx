@@ -1,7 +1,30 @@
 import logo from '../../assets/img/altaPlantaLogo.jpeg'
 import NavbarLink from './NavbarLink'
 import CartWidget from '../CartWidget/CartWidget'
-import { Link } from 'react-router-dom'
+import { Link, NavLink} from 'react-router-dom'
+
+const links = [
+  {
+    label: "Inicio",
+    href: "/",
+  },
+  {
+    label: "plantas",
+    href: "/productos/interior",
+  },
+  {
+    label: "macetas y accesorios",
+    href: "/productos/macetas",
+  },
+  {
+    label: "terrarios",
+    href: "/productos/terrarios",
+  },
+  {
+    label: "contacto",
+    href: "/contacto",
+  }
+];
 
 const Navbar = () => {
 
@@ -47,13 +70,22 @@ const Navbar = () => {
           </section>
         
         <div className=" navbar__bg py-1 px-6  items-center">
-          <nav className="flex justify-center gap-5">
-            <Link  to={"/"} className="link_navbar uppercase font-serif ">INICIO</Link>
-            <Link  to={"/productos/interior"} className="link_navbar uppercase font-serif ">PLANTAS</Link>
-            <Link  to={"/productos/macetas"} className="link_navbar uppercase font-serif">MACETAS Y ACCESORIOS</Link>
-            <Link  to={"/productos/terrarios"} className="link_navbar uppercase font-serif ">TERRARIOS</Link>
-            <Link  to={"/contacto"} className="link_navbar uppercase font-serif ">CONTACTO</Link>
-          </nav>
+        <nav className="flex items-center justify-center gap-4">
+          {links.map((link) => (
+
+            <NavLink
+              key={link.href}
+              to={link.href}
+              className={({ isActive }) => (
+                `uppercase  font-semibold hover:text-verdeHover ${isActive ? "text-verdeHover" : "text-verdePrincipal"}`
+              )}
+            >
+              {link.label}
+            </NavLink>
+
+          ))}
+        </nav>
+          
         </div>
 
       </header>
