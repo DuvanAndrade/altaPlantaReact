@@ -36,13 +36,13 @@ const HomePage = () =>{
 
            <div className="flex gap-11 justify-center p-16">
             <Link to="/productos/interior">
-                <img className="w-96 h-96 h-" src="public/img/mundoVerde.png" alt="" />
+                <img className="w-96 h-96 h-" src="/img/mundoVerde.png" alt="" />
             </Link>
             <Link to="/productos/macetas">
-                <img className="w-96 h-96" src="public/img/homedeco.png" alt="" />
+                <img className="w-96 h-96" src="/img/homedeco.png" alt="" />
             </Link>
             <Link to="/productos/terrarios">
-                <img className="w-96 h-96" src="public/img/terrariosDeco.png" alt="" />
+                <img className="w-96 h-96" src="/img/terrariosDeco.png" alt="" />
             </Link>
            </div>
         </section>

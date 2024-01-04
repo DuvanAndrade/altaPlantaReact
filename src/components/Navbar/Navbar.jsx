@@ -1,5 +1,4 @@
 import logo from '../../assets/img/altaPlantaLogo.jpeg'
-import NavbarLink from './NavbarLink'
 import CartWidget from '../CartWidget/CartWidget'
 import { Link, NavLink} from 'react-router-dom'
 
