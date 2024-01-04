@@ -1,5 +1,3 @@
-import Botones from "../Botones/Botones";
-
 const QuantitySelector = ({cantidad, stock, setCantidad}) => {
 
     const handleSumar = () => {
@@ -12,9 +10,21 @@ const QuantitySelector = ({cantidad, stock, setCantidad}) => {
   
     return (
       <div className="flex gap-4 items-center">
-        <Botones text="-" onClick={handleRestar}></Botones>
+        <button
+        onClick={handleRestar}
+        className={ `${cantidad ===1 ? `bg-alert` : `bg-verdePrincipal`} rounded py-2 px-4 text-white font-semibold`}
+          disabled={cantidad===1}
+          >
+          -
+        </button>
         <span>{cantidad}</span>
-        <Botones text="+" onClick={handleSumar}></Botones>
+        <button
+        onClick={handleSumar}
+        className={`${cantidad === stock ? `bg-alert` : `bg-verdePrincipal`}  rounded py-2 px-4 text-white font-semibold`}
+          disabled={cantidad===stock}
+          >
+          +
+        </button>
       </div>
     );
   };

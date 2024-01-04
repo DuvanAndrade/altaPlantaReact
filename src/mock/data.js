@@ -6,7 +6,7 @@ export const DATA = [
         img: '/img/plantasInterior/lirioDeLaPaz.jpg',
         description: `El lirio de la paz no solo dará un toque de belleza y serenidad a tu hogar. También limpiará de impurezas el aire que respiras. Además, no te exigirá muchos cuidados ni tiempo para mantener su hermosura y lozanía.`,
         categoria: 'interior',
-        stock: 15
+        stock: 0
     },
     {
         id: 2,
@@ -33,7 +33,7 @@ export const DATA = [
         img: '/img/plantasInterior/ficusPandurata.jpg',
         description: `Es una planta de hojas muy anchas y extremadamente resistente en condiciones ideales. Resiste la poca luminosidad y es sensible a corrientes de frio y vientos. Es muy utilizada en interiores para dar presencia debido a sus anchas hojas con un verde intenso oscuro. Requiere muy pocos cuidados por eso es una de las favoritas para novatos.`,
         categoria: 'interior',
-        stock: 15
+        stock: 6
     },
     {
         id: 5,
@@ -151,7 +151,7 @@ export const DATA = [
         img: '/img/macetas/mB&Wmini.jpg',
         description: ``,
         categoria: 'macetas',
-        stock: 15
+        stock: 5
     },
     {
         id: 18,

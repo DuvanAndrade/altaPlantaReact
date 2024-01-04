@@ -49,9 +49,8 @@ const Navbar = () => {
           </form>
           
           <div className='logo'>
-            <img  src={logo} alt="logo"/>
+            <Link to= "/"><img  src={logo} alt="logo"/></Link>
           </div>
-
           <div className='navbar__seccion font-serif'>
             <ul className=' flex gap-5'>
               <li className='navbar__seccion__list'>

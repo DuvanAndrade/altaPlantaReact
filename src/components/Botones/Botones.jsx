@@ -1,7 +1,7 @@
-const Botones = ({text, onClick}) => {
+const Botones = ({text, onClick, disabled = false}) => {
     return(
-        <button  onClick={onClick} className="text-lg px-2 font-normal bg-verdePrincipal text-colorBgNavbar hover:bg-colorBgNavbar
-         hover:text-verdePrincipal border-2 border-verdePrincipal" type="submit">{text}</button>
+        <button  onClick={onClick} disabled={disabled} className="text-lg rounded px-2 font-normal bg-verdePrincipal text-colorBgNavbar hover:bg-colorBgNavbar
+         hover:text-verdePrincipal border-2 border-verdePrincipal" type="submit">{text} </button>
     )
     
 }
