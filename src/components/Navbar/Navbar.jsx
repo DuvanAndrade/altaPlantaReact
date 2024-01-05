@@ -30,7 +30,7 @@ const Navbar = () => {
  
 
   return (
-      <header className= "navbar">
+      <header>
         
         <div className="navbar__info text-center text-white p-2 font-mono" >
           <p>Envío gratis a partir de $25000 | CABA/GBA Norte</p>

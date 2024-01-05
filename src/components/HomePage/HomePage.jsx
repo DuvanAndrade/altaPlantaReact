@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
+import MiCarousel from "../Carousel/MiCarousel";
 const HomePage = () =>{
     return(
-        <section>
-           <h1 className="text-center text-4xl py-20"> EN FABRICACIÓN 😊😊😊 </h1> 
-
-           <div className="bg-colorBgNavbar flex gap-20 justify-center p-10">
+        <section className="bg-colorBgMain">
+            <MiCarousel/>
+            <div className="bg-colorBgNavbar flex gap-20 justify-center p-10">
             <div className="flex">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="icons">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
@@ -32,19 +32,19 @@ const HomePage = () =>{
                     <p>Plantas solo CABA y GBA</p>
                 </div>
             </div>
-           </div>
+            </div>
 
-           <div className="flex gap-11 justify-center p-16">
+            <div className="flex gap-11 justify-center p-16">
             <Link to="/productos/interior">
-                <img className="w-96 h-96 h-" src="/img/mundoVerde.png" alt="" />
+                <img className="w-96 h-96 hover:scale-105 transition-all" src="/img/mundoVerde.png" alt="" />
             </Link>
             <Link to="/productos/macetas">
-                <img className="w-96 h-96" src="/img/homedeco.png" alt="" />
+                <img className="w-96 h-96 hover:scale-105 transition-all" src="/img/homedeco.png" alt="" />
             </Link>
             <Link to="/productos/terrarios">
-                <img className="w-96 h-96" src="/img/terrariosDeco.png" alt="" />
+                <img className="w-96 h-96 hover:scale-105 transition-all" src="/img/terrariosDeco.png" alt="" />
             </Link>
-           </div>
+            </div>
         </section>
     )
 
