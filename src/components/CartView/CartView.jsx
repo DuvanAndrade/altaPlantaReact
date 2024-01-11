@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import Botones from "../Botones/Botones";
 import EmptyCart from "./EmptyCart";
+import { Link } from "react-router-dom";
 
 const CartView = () =>{
     const { cart, totalCart, clearCart, removeItem } = useContext(CartContext) 
@@ -32,9 +33,12 @@ const CartView = () =>{
             </ul>
             
             </section>
-            <div className="grid justify-center pr-4">
-               <h4 className="text-verdePrincipal text-lg p-4 font-semibold font-serif">Total Carrito: $ {totalCart()}</h4>
+            <h4 className="text-verdePrincipal text-center text-lg pt-4 pb-2 font-semibold font-serif">Total Carrito: $ {totalCart()}</h4>
+
+            <div className="grid gap-4 justify-center justify-items-center pr-4">
+                <Link to='/checkout'><Botones text="Terminar Compra"/></Link>
                 <Botones text="Vaciar carrito" onClick={clearCart}/> 
+                
             </div>
             
             

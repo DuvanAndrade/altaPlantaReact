@@ -66,7 +66,7 @@ const ItemDetail = ({item}) =>{
              
               {
                 isInCart(item.id)
-                ? <Link to="/cart"><Botones text="Terminar Compra"/></Link>
+                ? <Link to="/cart"><Botones text="Iniciar Compra"/></Link>
                 
                 :<>
               <QuantitySelector

@@ -80,6 +80,7 @@ const Navbar = () => {
             >
               {link.label}
             </NavLink>
+            
 
           ))}
         </nav>

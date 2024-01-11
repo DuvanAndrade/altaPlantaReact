@@ -21,6 +21,7 @@ const MiCarousel = () =>{
           </div>
           <div className="carousel-item">
             <img src="/img/1.png" className="d-block" alt="..."/>
+            
           </div>
         </div>
         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">

@@ -1,22 +1,49 @@
-import FooterLink from "./FooterLink"
-import Botones from "../Botones/Botones"
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
+import NewsLetterForm from "../NewsLetterForm/NewsLetterForm"
 
-
+const links = [
+    {
+      label: "Inicio",
+      href: "/",
+    },
+    {
+      label: "plantas",
+      href: "/productos/interior",
+    },
+    {
+      label: "macetas y accesorios",
+      href: "/productos/macetas",
+    },
+    {
+      label: "terrarios",
+      href: "/productos/terrarios",
+    },
+    {
+      label: "contacto",
+      href: "/contacto",
+    }
+  ];
 const Footer = () =>{
     return (
         <footer className="footer__container font-serif text-verdePrincipal grid grid-cols-3 justify-items-center px-4 py-7">
             <section >
                 <h1 className="font-semibold ">NAVEGACIÓN</h1>
-                <div className="flex flex-col gap-4 pt-4">
-                    <Link  to={"/"} className="link_navbar uppercase font-serif ">INICIO</Link>
-                    <Link  to={"/productos/interior"} className="link_navbar uppercase font-serif ">PLANTAS</Link>
-                    <Link  to={"/productos/macetas"} className="link_navbar uppercase font-serif">MACETAS Y ACCESORIOS</Link>
-                    <Link  to={"/productos/terrarios"} className="link_navbar uppercase font-serif ">TERRARIOS</Link>
-                    <Link  to={"/contacto"} className="link_navbar uppercase font-serif ">CONTACTO</Link>
+                <div className=" navbar__bg py-1 pt-4 items-center">
+                    <nav className="flex flex-col justify-start justify-items-start gap-4">
+                    {links.map((link) => (
 
+                    <NavLink
+                    key={link.href}
+                    to={link.href}
+                    className={({ isActive }) => (
+                        `uppercase font-light  hover:text-verdeHover ${isActive ? "text-verdeHover" : "text-verdePrincipal"}`
+                    )}
+                    >
+                    {link.label}
+                    </NavLink>
+                    ))}
+                    </nav>
                 </div>
-                
             </section>
             <section className="flex flex-col">
                 <h1 className="font-semibold ">CONTACTANOS</h1>
@@ -55,12 +82,8 @@ const Footer = () =>{
                         </svg></a>
                     </div>
                     
-                    <div className="">
-                        <h2 className="font-semibold pb-2">¡NEWSLETTER!</h2>
-                        <form className="newsletter flex flex-col gap-4" >
-                            <input  type="email" name="user_mail" placeholder="Email*"/>      
-                            <Botones  text="Enviar"/>
-                        </form>
+                    <div>
+                        <NewsLetterForm/>
                     </div>
                 </div>
             </section>
