@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react"
-import { pedirDatos } from "../../utilities/utilities"
 import ItemList from "../ItemList/ItemList"
 import useProductos from "../../hooks/useProductos"
 import Loader from "../Loader/Loader"

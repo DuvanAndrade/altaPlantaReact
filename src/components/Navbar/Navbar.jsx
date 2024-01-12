@@ -9,7 +9,7 @@ const links = [
   },
   {
     label: "plantas",
-    href: "/productos/interior",
+    href: "/productos/plantas",
   },
   {
     label: "macetas y accesorios",
@@ -52,17 +52,10 @@ const Navbar = () => {
           </div>
           <div className='navbar__seccion font-serif'>
             <ul className=' flex gap-5'>
-              <li className='navbar__seccion__list'>
-                <a href="#">CREAR CUENTA</a>
-              </li>
-              <li className='navbar__seccion__list'>
-                <a href="#">INICIAR SECCIÓN</a>
-              </li>
-              <li>
-                <a href="#" className='text-verdePrincipal flex'>
+              <Link to="/login" className='navbar__seccion__list'><a href="#">INICIAR SECCIÓN</a></Link>
+              <a href="#" className='text-verdePrincipal flex'>
                  <CartWidget/> 
-                </a>
-              </li>
+              </a>
             </ul>
           </div>            
           </section>

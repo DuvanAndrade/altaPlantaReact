@@ -10,13 +10,15 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import { CartProvider } from './context/CartContext'
 import CartView from './components/CartView/CartView'
 import CheckOut from './components/CheckOut/CheckOut'
+import { UserProvider } from './context/UserContext'
+import LoginView from './components/LoginForm/LoginView'
 
 function App() {
   
 
   return (
-
-    <CartProvider>
+    <UserProvider>
+      <CartProvider>
       <BrowserRouter>
         <Navbar/>
           <Routes>
@@ -27,15 +29,16 @@ function App() {
             <Route path='contacto' element={<Contacto/>}/>
             <Route path='/cart' element={<CartView/>}/>
             <Route path='/checkout' element={<CheckOut/>}/>
+            <Route path='/login' element={<LoginView/>}/>
         
             <Route path='not-found' element={<h1 className='text-center text-verdePrincipal text-5xl pt-9 pb-40'>Not Found...</h1>}/>
             <Route path='*' element={<Navigate to={'not-found'}/>}/>
           </Routes>
-      
         <Footer/> 
       </BrowserRouter>
-
     </CartProvider>
+    </UserProvider>
+    
        
   )
 }

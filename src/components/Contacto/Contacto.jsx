@@ -1,15 +1,58 @@
 import { useState } from "react";
 import Botones from "../Botones/Botones";
+import { collection, addDoc, doc, getDoc, updateDoc } from "firebase/firestore";
+
 
 const Contacto = () =>{
-    const [nombre, setNombre] = useState("");
-    const [email, setEmail] = useState("");
-    const [mensaje, setMensaje] = useState("");
 
+    const initialState = {
+        nombre: "",
+        direccion:"",
+        email: "",
+        mensaje: ""
+    };
+    
+    const [ values, setValues ] = useState(initialState)
+
+    const handleInputChange = (e) => {
+        setValues({
+          ...values,
+          [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+
+        const contactoCliente = {
+            cliente: values,
+          
+        }
+        setValues(initialState);
+
+        const ordersRef = collection(db, 'contactoClientes')
+        // cart.forEach(item => {
+            
+        //     const docRef = doc(db, "orders");
+        //     getDoc(docRef)
+        //         .then(doc =>{
+        //             const stock = doc.data().stock
+        //             if(stock >= item.cantidad){
+        //                 updateDoc(docRef, {
+        //                     stock: doc.data.stock - item.cantidad
+        //                 })
+        //             }
+        //         })
+        // });
+            
+        addDoc(ordersRef, contactoCliente)
+        .then(doc =>{
+        })
+    }
 
     return(
         <>
-            <h1 className="text-verdePrincipal font-semibold font-serif text-center p-8 text-2xl">CONTÁCTANOS</h1>
+            <h1 className="text-verdePrincipal font-semibold font-serif text-center p-8 text-2xl bg-colorBgMain">CONTÁCTANOS</h1>
 
             <section className="bg-colorBgMain">
                 <section className="grid grid-cols-3 justify-items-center p-14 ">
@@ -37,32 +80,36 @@ const Contacto = () =>{
                     <p>rellenando el siguiente formulario</p>
                 </div>
 
-                <section className="formulario ">
-                <form className="formulario_contacto ">
-                        <div className="campo campo_ajuste">                        
+                <div className=" formulario bg-colorBgMain p-8">
+                    <form className="formulario_contacto" onSubmit={handleSubmit}>
+
+                        <div className="campo campo_ajuste">
                             <label htmlFor="nombre">Nombre:</label>
-                            <input  type="text" placeholder="" value={nombre} onChange={(e) => setNombre(e.target.value)}/>
+                            <input  type="text"  onChange={handleInputChange} value={values.nombre} name="nombre"/>
                         </div>
+
                         <div className="campo campo_ajuste">
-                            <label htmlFor="email">Emial:</label>
-                            <input 
-                            type="email"
-                            placeholder=""
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}/>
-                        </div>
-                        <div className="campo campo_ajuste">
-                            <label htmlFor="mensaje">Mensaje:</label>
-                            <textarea 
-                            placeholder=""
-                            value={mensaje}
-                            onChange={(e) => setMensaje(e.target.value)}/>
+                            <label htmlFor="direccion">Dirección:</label>
+                            <input  type="text"  onChange={handleInputChange} value={values.direccion} name="direccion"/>
 
                         </div>
-                   
-                    <Botones text="Enviar"/>
-                </form>
-                </section>
+
+                        <div className="campo campo_ajuste">
+                            <label htmlFor="email">Email:</label>
+                            <input  type="email"  onChange={handleInputChange} value={values.email} name="email"/>
+
+                        </div>
+                        
+                        <div className="campo campo_ajuste">
+                            <label htmlFor="mensaje">Mensaje:</label>
+                            <textarea name="mensaje" id="" cols="30" rows="10" onChange={handleInputChange} value={values.mensaje}></textarea>
+                        </div>
+                
+                        <button className="rounded text-lg mb-2 px-2 font-normal bg-verdePrincipal text-colorBgNavbar hover:bg-colorBgNavbar
+                        hover:text-verdePrincipal border-2 border-verdePrincipal" type="submit">Enviar</button>
+
+                    </form>
+                </div>
             </section>
 
             

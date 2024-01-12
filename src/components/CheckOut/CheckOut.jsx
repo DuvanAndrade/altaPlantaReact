@@ -24,7 +24,7 @@ const CheckOut = () => {
           ...values,
           [e.target.name]: e.target.value,
         });
-      };
+    };
 
     const handleSubmit = (e) =>{
         e.preventDefault()
@@ -38,19 +38,19 @@ const CheckOut = () => {
         setValues(initialState);
 
         const ordersRef = collection(db, 'orders')
-        cart.forEach(item => {
+        // cart.forEach(item => {
             
-            const docRef = doc(db, "orders");
-            getDoc(docRef)
-                .then(doc =>{
-                    const stock = doc.data().stock
-                    if(stock >= item.cantidad){
-                        updateDoc(docRef, {
-                            stock: doc.data.stock - item.cantidad
-                        })
-                    }
-                })
-        });
+        //     const docRef = doc(db, "orders");
+        //     getDoc(docRef)
+        //         .then(doc =>{
+        //             const stock = doc.data().stock
+        //             if(stock >= item.cantidad){
+        //                 updateDoc(docRef, {
+        //                     stock: doc.data.stock - item.cantidad
+        //                 })
+        //             }
+        //         })
+        // });
             
         addDoc(ordersRef, orden)
         .then(doc =>{
@@ -69,18 +69,10 @@ const CheckOut = () => {
                 <div className="bg-colorBgMain pt-8 pb-10">
                     <Link to={"/"} className="flex justify-center"><Botones text="Seguir Navegando"/></Link>
                 </div>
-                
-
             </>
-                
         )
-
-        
-
     }
-
    
-    
     return(
         <>
         <h2 className="text-verdePrincipal bg-colorBgMain uppercase font-semibold font-serif text-center pt-10 text-2xl">Datos de Contacto</h2>
