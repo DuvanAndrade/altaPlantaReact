@@ -12,7 +12,7 @@ const MiCarousel = () =>{
           <div className="carousel-item active max-w-max">
             <img src="/img/2.png" className="d-block" alt="..."/>
             <div className="carousel-caption d-none d-md-block">
-              <Link className='hover:bg-white bg-colorBgMain transition-all hover:text-red text-black rounded ' to="/productos/interior"><button className=' w-20 '>ver más</button></Link>
+              <Link className='hover:bg-white bg-colorBgMain transition-all hover:text-red text-black rounded p-1' to="/productos/interior"><button className=' w-20 '>ver más</button></Link>
             </div>
           </div>
           <div className="carousel-item">

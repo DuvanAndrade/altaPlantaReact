@@ -52,7 +52,7 @@ const Contacto = () =>{
 
     return(
         <>
-            <h1 className="text-verdePrincipal font-semibold font-serif text-center p-8 text-2xl bg-colorBgMain">CONTÁCTANOS</h1>
+            <h1 className="text-verdePrincipal font-semibold font-serif text-center p-10 text-2xl bg-colorBgMain">CONTÁCTANOS</h1>
 
             <section className="bg-colorBgMain">
                 <section className="grid grid-cols-3 justify-items-center p-14 ">

@@ -1,9 +1,11 @@
 import { useContext, useState } from "react"
 import { CartContext } from "../../context/CartContext";
 import { db } from "../../firebase/config";
-import { collection, addDoc, doc, getDoc, updateDoc } from "firebase/firestore";
+import { collection, writeBatch, documentId, addDoc, getDocs, doc, getDoc, updateDoc, query, where } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import Botones from "../Botones/Botones";
+import {  ToastContainer} from 'react-toastify'
+import { enviado, warning } from '../NewsLetterForm//Alert';
 
 const CheckOut = () => {
 
@@ -26,7 +28,7 @@ const CheckOut = () => {
         });
     };
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault()
 
         const orden = {
@@ -36,27 +38,43 @@ const CheckOut = () => {
             fecha: new Date(),
         }
         setValues(initialState);
-
+        //actualizar el stock de productos
+        const batch =  writeBatch(db)
         const ordersRef = collection(db, 'orders')
-        // cart.forEach(item => {
-            
-        //     const docRef = doc(db, "orders");
-        //     getDoc(docRef)
-        //         .then(doc =>{
-        //             const stock = doc.data().stock
-        //             if(stock >= item.cantidad){
-        //                 updateDoc(docRef, {
-        //                     stock: doc.data.stock - item.cantidad
-        //                 })
-        //             }
-        //         })
-        // });
-            
-        addDoc(ordersRef, orden)
-        .then(doc =>{
-            setOrderId(doc.id)
-            clearCart()
+        const productsRef = collection(db, 'productos')
+        const itemsQuery = query(productsRef, where(documentId(), 'in', cart.map(produ => produ.id)))
+        const queryDocs = await getDocs(itemsQuery)
+
+        const outOfStock = []
+
+        queryDocs.docs.forEach(doc => {
+            const item = cart.find(produ => produ.id === doc.id)
+            const stock = doc.data().stcok
+
+            if(stock >= item.cantidad){
+                batch.update(doc.ref, {
+                    stock: stock - item.cantidad
+                })
+            }else {
+                outOfStock.push(item)
+            }
         })
+        if(outOfStock.length === 0){
+            batch.commit()
+                .then(() =>{
+                    addDoc(ordersRef, orden).then((doc) =>{
+                        setOrderId(doc.id)
+                        clearCart()
+                        enviado("Gracias por tú compra")
+
+                    })
+                })
+
+        }else{
+            warning("Hay Items Sin Stock")
+        }
+
+        
     }
 
     if(orderId){
@@ -77,7 +95,7 @@ const CheckOut = () => {
         <>
         <h2 className="text-verdePrincipal bg-colorBgMain uppercase font-semibold font-serif text-center pt-10 text-2xl">Datos de Contacto</h2>
 
-        <div className=" formulario bg-colorBgMain p-8">
+        <div className="formulario bg-colorBgMain p-8">
             <form className="formulario_contacto" onSubmit={handleSubmit}>
 
                 <div className="campo campo_ajuste">
@@ -96,7 +114,7 @@ const CheckOut = () => {
                     <input  type="email"  onChange={handleInputChange} value={values.email} name="email"/>
 
                 </div>
-                
+                <ToastContainer/>
                 <button className="rounded text-lg mb-2 px-2 font-normal bg-verdePrincipal text-colorBgNavbar hover:bg-colorBgNavbar
                 hover:text-verdePrincipal border-2 border-verdePrincipal" type="submit">Enviar</button>
 

@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 import logo from '../../assets/img/altaPlantaLogo.jpeg'
 import CartWidget from '../CartWidget/CartWidget'
 import { Link, NavLink} from 'react-router-dom'
@@ -27,8 +29,9 @@ const links = [
 
 const Navbar = () => {
 
- 
+  const { user, logout } = useContext(UserContext);
 
+ 
   return (
       <header>
         
@@ -52,7 +55,19 @@ const Navbar = () => {
           </div>
           <div className='navbar__seccion font-serif'>
             <ul className=' flex gap-5'>
-              <Link to="/login" className='navbar__seccion__list'><a href="#">INICIAR SECCIÓN</a></Link>
+              {user.logged ? (
+              <div className='navbar__seccion__list flex flex-col'>
+                <p className="text-verdePrincipal">¡Hola! {user.email}</p>
+                <div className="flex justify-end">
+                <button className="rounded w-max text-xs mb-2 px-2 font-normal bg-verdePrincipal text-colorBgNavbar hover:bg-colorBgNavbar hover:text-verdePrincipal border-2 border-verdePrincipal" onClick={logout}>Cerrar Sección</button>
+                </div>
+                
+              </div>
+            ) : (
+              <Link to="/login" className='navbar__seccion__list'>
+                <a href="#">INICIAR SESIÓN</a>
+              </Link>
+            )}
               <a href="#" className='text-verdePrincipal flex'>
                  <CartWidget/> 
               </a>
