@@ -28,54 +28,52 @@ const CheckOut = () => {
         });
     };
 
-    const handleSubmit = async (e) =>{
-        e.preventDefault()
-
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
         const orden = {
-            cliente: values,
-            items: cart,
-            total: totalCart(),
-            fecha: new Date(),
-        }
+          cliente: values,
+          items: cart,
+          total: totalCart(),
+          fecha: new Date(),
+        };
         setValues(initialState);
-        //actualizar el stock de productos
-        const batch =  writeBatch(db)
-        const ordersRef = collection(db, 'orders')
-        const productsRef = collection(db, 'productos')
-        const itemsQuery = query(productsRef, where(documentId(), 'in', cart.map(produ => produ.id)))
-        const queryDocs = await getDocs(itemsQuery)
-
-        const outOfStock = []
-
-        queryDocs.docs.forEach(doc => {
-            const item = cart.find(produ => produ.id === doc.id)
-            const stock = doc.data().stcok
-
-            if(stock >= item.cantidad){
-                batch.update(doc.ref, {
-                    stock: stock - item.cantidad
-                })
-            }else {
-                outOfStock.push(item)
-            }
-        })
-        if(outOfStock.length === 0){
-            batch.commit()
-                .then(() =>{
-                    addDoc(ordersRef, orden).then((doc) =>{
-                        setOrderId(doc.id)
-                        clearCart()
-                        enviado("Gracias por tú compra")
-
-                    })
-                })
-
-        }else{
-            warning("Hay Items Sin Stock")
-        }
-
         
-    }
+        const batch = writeBatch(db)
+        const ordersRef = collection(db, "orders");
+        const productsRef = collection(db, 'productos')
+        const itemsQuery = query(productsRef, where( documentId(), 'in', cart.map(prod => prod.id) ))
+        const querySnapshot = await getDocs(itemsQuery)
+    
+        const outOfStock = []
+     
+       
+        querySnapshot.docs.forEach(doc => {
+          const item = cart.find(prod => prod.id === doc.id)
+          const stock = doc.data().stock
+         
+          if (stock >= item.cantidad) {  // ? doc.ref === doc(db, 'productos', doc.id)
+            batch.update(doc.ref, {
+              stock: stock - item.cantidad
+            })
+          } else {
+            outOfStock.push(item)
+          }
+        })
+    
+        if (outOfStock.length === 0) {
+          batch.commit()
+            .then(() => {      
+              addDoc(ordersRef, orden).then((doc) => {
+                  setOrderId(doc.id)
+                  clearCart()
+    
+                  enviado("Gracias por tu compra!")
+              });
+            })
+        } 
+    
+      };
 
     if(orderId){
         return(
