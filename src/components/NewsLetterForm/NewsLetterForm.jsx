@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {  ToastContainer} from 'react-toastify'
-import { enviado, info, warning } from './Alert';
+import { enviado, info, warning } from './Alert'
+;
 
 const NewsLetterForm = () => {
 

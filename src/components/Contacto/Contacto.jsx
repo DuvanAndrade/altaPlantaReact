@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Botones from "../Botones/Botones";
+import { db } from "../../firebase/config";
 import { collection, addDoc, doc, getDoc, updateDoc } from "firebase/firestore";
+import { enviado, warning } from '../NewsLetterForm//Alert';
 
 
 const Contacto = () =>{
@@ -21,38 +23,34 @@ const Contacto = () =>{
         });
     };
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault()
+        if (!values.nombre || !values.direccion || !values.email || !values.mensaje) {
+            warning("Por favor, completa todos los campos del formulario.");
+            return;
+        }
 
         const contactoCliente = {
-            cliente: values,
-          
-        }
-        setValues(initialState);
-
-        const ordersRef = collection(db, 'contactoClientes')
-        // cart.forEach(item => {
-            
-        //     const docRef = doc(db, "orders");
-        //     getDoc(docRef)
-        //         .then(doc =>{
-        //             const stock = doc.data().stock
-        //             if(stock >= item.cantidad){
-        //                 updateDoc(docRef, {
-        //                     stock: doc.data.stock - item.cantidad
-        //                 })
-        //             }
-        //         })
-        // });
-            
-        addDoc(ordersRef, contactoCliente)
-        .then(doc =>{
-        })
+            nombre: values.nombre,
+            direccion: values.direccion,
+            email: values.email,
+            mensaje: values.mensaje,
+          };
+          try {
+            const docRef = await addDoc(collection(db, "contactos"), contactoCliente);
+            enviado("Mensaje Enviado", docRef.id)
+         
+      
+            setValues(initialState);
+          } catch (error) {
+            warning("Error Al enviar", error)
+   
+          }
     }
 
     return(
         <>
-            <h1 className="text-verdePrincipal font-semibold font-serif text-center p-10 text-2xl bg-colorBgMain">CONTÁCTANOS</h1>
+            <h1 className="text-verdePrincipal font-semibold font-serif text-center p-8 text-2xl bg-colorBgMain">CONTÁCTANOS</h1>
 
             <section className="bg-colorBgMain">
                 <section className="grid grid-cols-3 justify-items-center p-14 ">

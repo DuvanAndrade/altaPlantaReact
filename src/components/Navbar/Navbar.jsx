@@ -1,8 +1,13 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserContext";
+import { useState } from "react";
 import logo from '../../assets/img/altaPlantaLogo.jpeg'
 import CartWidget from '../CartWidget/CartWidget'
 import { Link, NavLink} from 'react-router-dom'
+import { db } from "../../firebase/config";
+import { collection, getDocs, query, where } from "firebase/firestore";
+
+
 
 const links = [
   {
@@ -30,6 +35,43 @@ const links = [
 const Navbar = () => {
 
   const { user, logout } = useContext(UserContext);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  useEffect(() => {
+    const fetchSearchResults = async () => {
+      try {
+        
+        const querySnapshot = await getDocs(
+          query(collection(db, "productos"), where("name", "==", searchTerm))
+        );
+  
+        const results = [];
+        querySnapshot.forEach((doc) => {
+          results.push(doc.data());
+        });
+  
+        setSearchResults(results);
+      } catch (error) {
+        console.error("Error al buscar en Firestore: ", error);
+      }
+    };
+  
+    if (searchTerm !== "") {
+      fetchSearchResults();
+    } else {
+      setSearchResults([]); 
+    }
+  }, [searchTerm]);
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value.toUpperCase());
+    
+  };
+  
+//NOTA: ES ALGO OPCIONAL DE LOS REQUISITOS. PERO QUERIA HACER UNA BARRA DE BUSQUEDA. QUE AUNQUE ME TRAE POR CONSOLA EL PRODCUTO BUSCADO NO SUPE COMO HACER QUE SE RENDERIZARA COMO EN ITEMDETAIL.
+
+
 
  
   return (
@@ -42,7 +84,7 @@ const Navbar = () => {
         <section className="navbar__bg py-1 px-6 grid grid-cols-3 justify-items-center items-center">
           
           <form className='busqueda flex'>
-            <input className='busqueda__input' type="search" placeholder='Buscar...'/>
+            <input className='busqueda__input' type="search" onChange={handleSearch} value={searchTerm} placeholder='Buscar...'/>
             <button className='busqueda__btn'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />

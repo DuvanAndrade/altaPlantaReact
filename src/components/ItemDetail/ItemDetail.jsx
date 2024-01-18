@@ -51,6 +51,7 @@ const ItemDetail = ({item}) =>{
 
     )
   }
+  
 
       return(
         <section>
