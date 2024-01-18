@@ -51,6 +51,7 @@ const ItemDetail = ({item}) =>{
 
     )
   }
+
       return(
         <section>
           <article className="grid grid-cols-2 justify-items-center py-7 px-5">

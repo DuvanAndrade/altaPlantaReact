@@ -38,7 +38,7 @@ const CheckOut = () => {
           fecha: new Date(),
         };
         setValues(initialState);
-        
+        //Actualizacion de Stock
         const batch = writeBatch(db)
         const ordersRef = collection(db, "orders");
         const productsRef = collection(db, 'productos')
@@ -52,7 +52,7 @@ const CheckOut = () => {
           const item = cart.find(prod => prod.id === doc.id)
           const stock = doc.data().stock
          
-          if (stock >= item.cantidad) {  // ? doc.ref === doc(db, 'productos', doc.id)
+          if (stock >= item.cantidad) {
             batch.update(doc.ref, {
               stock: stock - item.cantidad
             })
